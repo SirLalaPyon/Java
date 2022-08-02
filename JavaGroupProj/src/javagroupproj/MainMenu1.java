@@ -1,6 +1,9 @@
 package javagroupproj;
+import MyLib.*;
+import javax.swing.JOptionPane;
 
 public class MainMenu1 extends javax.swing.JFrame {
+    public String AdminUsernameInput, AdminPasswordInput;
 
     /**
      * Creates new form MainFrame
@@ -162,16 +165,26 @@ public class MainMenu1 extends javax.swing.JFrame {
 
     private void AdminUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUsernameFieldActionPerformed
         // Admin username input
-        String AdminUsernameInput;
-
-        AdminUsernameInput = AdminUsernameField.getText();
     }//GEN-LAST:event_AdminUsernameFieldActionPerformed
 
     private void SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInActionPerformed
         // Sign in button
-        MainMenu2 MainMenu2 = new MainMenu2();
-        MainMenu2.show();//Display MainMenu 2 page
-        dispose();//Close current page
+        Admin Admin1 = new Admin("Elijah", "Tam-od", "elijah@yahoocom", "091234246", "Elijah", "123456");
+        Admin Admin2 = new Admin("Jahnreil", "JahnJahn", "Jahn@yahoocom", "09123424", "Jahnreil","123456");
+        
+        AdminUsernameInput = AdminUsernameField.getText();
+        System.out.println(AdminUsernameInput);
+        AdminPasswordInput = AdminPasswordField.getText();
+        System.out.println(AdminPasswordInput);
+        System.out.println(Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput));  
+
+        if (Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput)) {
+            MainMenu2 MainMenu2 = new MainMenu2();
+            MainMenu2.show();//Display MainMenu 2 page
+            dispose();//Close current page
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect credentials, please try again");
+        }
     }//GEN-LAST:event_SignInActionPerformed
 
     /**

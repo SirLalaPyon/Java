@@ -12,7 +12,7 @@ public class Lots {
         this.price = price;
         this.lotStatus = lotStatus;
         
-        if (validateStatus(lotStatus)){ //Errors for some reason
+        if (validateStatus(lotStatus)){
             this.lotStatus = lotStatus;
         }
         else{
@@ -36,8 +36,21 @@ public class Lots {
     public String getLotStatus() {
         return lotStatus;
     }
+    public String getLotNum() {
+        return lotNum;
+    }
+
+    public double getLotSize() {
+        return lotSize;
+    }
+
+    public double getPrice() {
+        return price;
+    }
     
     //========== Setter ==========
+
+    
 
     
 }

@@ -30,8 +30,8 @@ public class Admin extends User{
     }
     public Boolean VerifyCreds(String UName, String Passw) {
         
-        if (UName == Username) {
-            if (Passw == Password){ 
+        if (Username.equals(UName)) {
+            if (Password.equals(Passw)){ 
                 return true;
             }
         }
