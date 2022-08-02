@@ -9,7 +9,6 @@ public class User {
     protected String PNumber;
     protected int ID;
     
-    static protected int IDCnt = 0;
     //=================== Getter ===================
     public String getFname() {
         return Fname;
@@ -30,10 +29,6 @@ public class User {
 
     public int getID() {
         return ID;
-    }
-
-    public static int getIDCnt() {
-        return IDCnt;
     }
     
 }

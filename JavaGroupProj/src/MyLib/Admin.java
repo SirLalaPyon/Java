@@ -1,11 +1,10 @@
-
 package MyLib;
-
 
 public class Admin extends User{
     private String Username;
     private String Password;
     
+    static private int IDCnt = 0;
 
     public Admin(String Fname, String Lname, String Email, String PNumber, String UserName, String Pass) {
         this.Fname = Fname;
