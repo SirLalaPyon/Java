@@ -1,4 +1,6 @@
+
 package MyLib;
+
 
 public class Admin extends User{
     private String Username;
@@ -26,11 +28,14 @@ public class Admin extends User{
     public String getPassword() {
         return Password;
     }
-    
-    /*public Boolean VerifyCreds(String UName, String Passw) {
+    public Boolean VerifyCreds(String UName, String Passw) {
         
-        
-        
-    }*/
+        if (UName == Username) {
+            if (Passw == Password){ 
+                return true;
+            }
+        }
+        return false;     
+    }
     
 }
