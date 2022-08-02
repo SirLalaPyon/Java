@@ -2,7 +2,8 @@ package MyLib;
 
 
 public class Customer extends User{
-
+    static private int IDCnt = 0;
+    
     public Customer(String Fname, String Lname, String Email, String PNumber) {
         this.Fname = Fname;
         this.Lname = Lname;
