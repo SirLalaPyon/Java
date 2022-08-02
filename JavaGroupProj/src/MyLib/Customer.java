@@ -6,7 +6,7 @@ public class Customer {
     private String Cust_Lname;
     private String Cust_Email;
     private String Cust_PNumber;
-    private int ID;
+    private int Cust_ID;
     
     //ID number counter
     static private int IDCnt = 0;
@@ -16,9 +16,10 @@ public class Customer {
         this.Cust_Lname = Cust_Lname;
         this.Cust_Email = Cust_Email;
         this.Cust_PNumber = Cust_PNumber;
-        this.ID = ID;
         
+        //ID is automatically added and constructed whenever a customer instance is made
         IDCnt +=1;
+        this.Cust_ID = IDCnt;
     }
 
     
@@ -41,7 +42,7 @@ public class Customer {
     
 
     public int getID() {
-        return ID;
+        return Cust_ID;
     }
 
     public static int getIDCnt() {
