@@ -12,15 +12,16 @@ public class Lots {
         this.price = price;
         this.lotStatus = lotStatus;
         
-        /*if (validateStatus(lotStatus)){ //Errors for some reason
+        if (validateStatus(lotStatus)){ //Errors for some reason
             this.lotStatus = lotStatus;
         }
-        else
-            this.lotStatus=null;*/
-        
+        else{
+            this.lotStatus=null;
+            System.out.println("Lot ID: " + lotNum + " has invalid status, available status are (Available, Reserved, Sold)");
+        }
     }
     
-    /*public final Boolean validateStatus(String status){
+    public final Boolean validateStatus(String status){
         Boolean isValid=null;
         if (lotStatus == "Available" || lotStatus == "Reserved" || lotStatus == "Sold"){
             isValid=true;
@@ -30,7 +31,11 @@ public class Lots {
         }
         
         return isValid;
-    }*/
+    }
+    //========== Getter ==========
+    public String getLotStatus() {
+        return lotStatus;
+    }
     
     //========== Setter ==========
 
