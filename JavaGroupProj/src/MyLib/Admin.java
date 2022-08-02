@@ -6,14 +6,14 @@ public class Admin extends User{
     private String Username;
     private String Password;
     
-    
 
-    public Admin(String Fname, String Lname, String Email, String PNumber) {
+    public Admin(String Fname, String Lname, String Email, String PNumber, String UserName, String Pass) {
         this.Fname = Fname;
         this.Lname = Lname;
         this.Email = Email;
         this.PNumber = PNumber;
-        
+        this.Username = UserName;
+        this.Password = Pass;
         //ID is automatically added and constructed whenever an admin instance is made
         IDCnt +=1;
         this.ID = IDCnt;
@@ -27,5 +27,11 @@ public class Admin extends User{
     public String getPassword() {
         return Password;
     }
+    
+    /*public Boolean VerifyCreds(String UName, String Passw) {
+        
+        
+        
+    }*/
     
 }
