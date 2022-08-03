@@ -2,17 +2,16 @@ package MyLib;
 
 public class Lots {
     private String lotNum;
-    private double lotSize; //in m^2
-    private double price;
+    private int lotSize; //in m^2
+    private double price;//Price is automatically calculated
     private String lotStatus;//Available, Reserved, Sold
-    private String lotLocation;
+    private int lotLocation;// 1 = Rural, 2 = Urban
 
-    public Lots(String lotNum, double lotSize, double price, String lotStatus) {
+    public Lots(String lotNum, int lotSize, String lotStatus, int lotLocation) {
         this.lotNum = lotNum;
         this.lotSize = lotSize;
-        this.price = price;
-        this.lotStatus = lotStatus;
         
+        //Validate status if input is within available choices
         if (validateStatus(lotStatus)){
             this.lotStatus = lotStatus;
         }
@@ -20,16 +19,39 @@ public class Lots {
             this.lotStatus=null;
             System.out.println("Lot ID: " + lotNum + " has invalid status, available status are (Available, Reserved, Sold)");
         }
+        
+        //Validate location if input is within available choices
+        if (validateLocation(lotLocation)){
+            this.lotStatus = lotStatus;
+        }
+        else{
+            this.lotStatus=null;
+            System.out.println("Lot ID: " + lotNum + " has invalid status, available status are (Rural, Urban");
+        }
+        
+        /*Automatically calculate price
+                Rural = sqm * 3000
+                Urban = sqm * 4000
+        */
+        this.price = Compute.CalculatePrice(lotLocation, lotSize);
+        
     }
     
     public final Boolean validateStatus(String status){
         Boolean isValid=null;
-        if (lotStatus == "Available" || lotStatus == "Reserved" || lotStatus == "Sold"){
+        if (status == "Available" || status == "Reserved" || status == "Sold"){
             isValid=true;
         }
         else{
             isValid=false;
         }
+        
+        return isValid;
+    }
+    
+    public final Boolean validateLocation(int location){
+        Boolean isValid=null;
+        isValid = location == 1 || location == 2;
         
         return isValid;
     }
@@ -46,6 +68,7 @@ public class Lots {
     }
 
     public double getPrice() {
+        
         return price;
     }
     

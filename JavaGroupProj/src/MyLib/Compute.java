@@ -10,7 +10,9 @@ public class Compute {
     }
     public static double CalculatePrice (int choice, int Sqm) {
         switch (choice) {
+            //Rural
             case 1: return Sqm * 3000;
+            //Urban
             case 2: return Sqm * 4000;
             default: return 0;
         }
