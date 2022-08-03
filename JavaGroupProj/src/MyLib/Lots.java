@@ -5,6 +5,7 @@ public class Lots {
     private double lotSize; //in m^2
     private double price;
     private String lotStatus;//Available, Reserved, Sold
+    private String lotLocation;
 
     public Lots(String lotNum, double lotSize, double price, String lotStatus) {
         this.lotNum = lotNum;

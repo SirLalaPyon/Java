@@ -1,6 +1,7 @@
 package javagroupproj;
 
 import MyLib.*;
+import java.util.ArrayList;
 
 
 
@@ -50,10 +51,17 @@ public class MainApplication {
         Lots LotA19 = new Lots("A19", 67, 4550, "Sold");
         Lots LotA20 = new Lots("A20", 58, 2330, "Available");
         
-        Lots[] LotsNewYork = {LotA1, LotA2, LotA3, LotA4,LotA5, LotA6, LotA7, LotA9, LotA10,
-                            LotA11, LotA12, LotA13, LotA14, LotA15, LotA16, LotA17, LotA18, LotA19, LotA20};
+        ArrayList<Lots> LotsNewYork= new ArrayList<>();
+        LotsNewYork.add(LotA1);
+        LotsNewYork.add(LotA2);
+        LotsNewYork.add(LotA3);
+        LotsNewYork.add(LotA4);
+        LotsNewYork.add(LotA5);
+        LotsNewYork.add(LotA6);
+        LotsNewYork.add(LotA7);
+        LotsNewYork.add(LotA8);
         
-        BlockA.setLotsArray(LotsNewYork);//Assign lots to block
+        //BlockA.setLotsArray(LotsNewYork);//Assign lots to block
         
         //Display Output
         //System.out.printf("%-20s %-20s %-20s %-20s\n", "Lot ID", "Lot Size", "Price", "Status");
