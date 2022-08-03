@@ -13,7 +13,13 @@ public class Blocks {
         this.address = address;
         this.LotsArray = LotsArray;
     }
-
+    
+    //========== Getters ==========
+    public ArrayList<Lots> getLotsArray() {
+        return LotsArray;
+    }
+    
+    //========== Setters ==========
     public void setLotsArray(ArrayList<Lots> LotsArray) {
         this.LotsArray = LotsArray;
     }

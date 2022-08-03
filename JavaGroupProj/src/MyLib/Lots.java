@@ -3,9 +3,10 @@ package MyLib;
 public class Lots {
     private String lotNum;
     private int lotSize; //in m^2
-    private double price;//Price is automatically calculated
+    private int price;//Price is automatically calculated
     private String lotStatus;//Available, Reserved, Sold
     private int lotLocation;// 1 = Rural, 2 = Urban
+    private String lotArea;//New York, 
 
     public Lots(String lotNum, int lotSize, String lotStatus, int lotLocation) {
         this.lotNum = lotNum;
@@ -22,11 +23,11 @@ public class Lots {
         
         //Validate location if input is within available choices
         if (validateLocation(lotLocation)){
-            this.lotStatus = lotStatus;
+            this.lotLocation = lotLocation;
         }
         else{
             this.lotStatus=null;
-            System.out.println("Lot ID: " + lotNum + " has invalid status, available status are (Rural, Urban");
+            System.out.println("Lot ID: " + lotNum + " has invalid status, available status are (1 = Rural, 2 = Urban");
         }
         
         /*Automatically calculate price
@@ -67,14 +68,18 @@ public class Lots {
         return lotSize;
     }
 
-    public double getPrice() {
-        
+    public int getPrice() {
         return price;
     }
     
-    //========== Setter ==========
-
+    public String getLotLocation() {
+        if(lotLocation == 1)
+            return "Rural";
+        else
+            return "Urban";
+    }
     
-
+    //========== Setter ==========
+//
     
 }

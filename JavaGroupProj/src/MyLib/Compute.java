@@ -8,7 +8,7 @@ public class Compute {
             default: return 0;
         }
     }
-    public static double CalculatePrice (int choice, int Sqm) {
+    public static int CalculatePrice (int choice, int Sqm) {
         switch (choice) {
             //Rural
             case 1: return Sqm * 3000;

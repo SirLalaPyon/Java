@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class Management extends javax.swing.JFrame {
+    //========== Blocks List ==========
+    //public Blocks(String blockName, String address, ArrayList<Lots> LotsArray)
+    Blocks BlockA = new Blocks("BlockA", "New York", null);
+    Blocks BlockB = new Blocks("BlockB", "California", null);
+    Blocks BlockC = new Blocks("BlockC", "Los Angeles", null);
+    Blocks BlockD = new Blocks("BlockD", "Texas", null);
+    Blocks BlockE = new Blocks("BlockE", "Virginia", null);
     
     //========== Lots List (New York) ==========
     //public Lots(String lotNum, int lotSize, String lotStatus, int lotLocation)
@@ -31,10 +38,16 @@ public class Management extends javax.swing.JFrame {
     
     //========== Lots List (California) ==========
     Lots LotB1 = new Lots("B1", 23, "Available", 1);
+    Lots LotB2 = new Lots("B2", 24, "Available", 2);
         
     ArrayList<Lots> LotsNewYork; //LotsA
-    ArrayList<Lots> California; //LotsA
-    String header[] = new String[]{"ID", "Size", "Price", "Status", "Location", "Area"};
+    ArrayList<Lots> LotsCalifornia; //LotsB
+    
+    
+    //========== Blocks List (California) ==========
+    ArrayList<Blocks> BlocksList; //Need to create a list of blocks to make them be selectable by their index
+    
+    String header[] = new String[]{"ID", "Size", "Price", "Status", "Location", "Area (Block)"};
     DefaultTableModel dtm;
     int row, col;
     /**
@@ -42,7 +55,11 @@ public class Management extends javax.swing.JFrame {
      */
     public Management() {
         initComponents();
+        //Instantiate arrays
+        BlocksList = new ArrayList<>();
         LotsNewYork = new ArrayList<>();
+        LotsCalifornia = new ArrayList<>();
+        
         LotsNewYork.add(LotA1);
         LotsNewYork.add(LotA2);
         LotsNewYork.add(LotA3);
@@ -51,15 +68,27 @@ public class Management extends javax.swing.JFrame {
         LotsNewYork.add(LotA6);
         LotsNewYork.add(LotA7);
         LotsNewYork.add(LotA8);
-        dtm = new DefaultTableModel(header,0);
+        
+        LotsCalifornia.add(LotB1);
+        LotsCalifornia.add(LotB2);
+        
+        //set lots of block
+        BlockA.setLotsArray(LotsNewYork);
+        BlockB.setLotsArray(LotsCalifornia);
+        
+        BlocksList.add(BlockA);
+        BlocksList.add(BlockB);
+        
+        dtm = new DefaultTableModel(header,0);//instantiate table
         jTable1.setModel(dtm);
         this.setLocationRelativeTo(null);
         
         //clears the table
         dtm.setRowCount(0); 
+        
         //Add data from lots array into Jframe table
         for (int i = 0; i<LotsNewYork.size(); i++){
-            Object[] lots = {LotsNewYork.get(i).getLotNum(), LotsNewYork.get(i).getLotSize(), LotsNewYork.get(i).getPrice(),LotsNewYork.get(i).getLotStatus()};
+            Object[] lots = {LotsNewYork.get(i).getLotNum(), LotsNewYork.get(i).getLotSize(), LotsNewYork.get(i).getPrice(),LotsNewYork.get(i).getLotStatus(), LotsNewYork.get(i).getLotLocation()};
             dtm.addRow(lots);
         }
         
@@ -93,8 +122,9 @@ public class Management extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         BlockAreaInput = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,9 +219,16 @@ public class Management extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Reserve");
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Buy");
+        jButton2.setText("Reserve");
+
+        jButton3.setText("Buy");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -219,20 +256,25 @@ public class Management extends javax.swing.JFrame {
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(111, 111, 111)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                    .addComponent(BlockAreaInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(111, 111, 111)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                            .addComponent(BlockAreaInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(149, 149, 149)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
@@ -276,8 +318,9 @@ public class Management extends javax.swing.JFrame {
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -322,8 +365,28 @@ public class Management extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void BlockAreaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlockAreaInputActionPerformed
-        // TODO add your handling code here:
+        //get value from selected input
+        int AreaInput = BlockAreaInput.getSelectedIndex();
+       
     }//GEN-LAST:event_BlockAreaInputActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        //Search the lots based on specifications
+        int AreaInput = BlockAreaInput.getSelectedIndex();
+        Blocks SelectedBlock = BlocksList.get(AreaInput);
+        
+        //clears the table
+        dtm.setRowCount(0); 
+        
+        //Add data from lots array into Jframe table
+        for (int i = 0; i<SelectedBlock.getLotsArray().size(); i++){
+            ArrayList<Lots> SelectedArray = SelectedBlock.getLotsArray();
+            
+            Object[] lots = {SelectedArray.get(i).getLotNum(), SelectedArray.get(i).getLotSize(), SelectedArray.get(i).getPrice(),SelectedArray.get(i).getLotStatus(), SelectedArray.get(i).getLotLocation()};
+            dtm.addRow(lots);
+        }
+        
+    }//GEN-LAST:event_SearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,8 +432,9 @@ public class Management extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BlockAreaInput;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Search;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
