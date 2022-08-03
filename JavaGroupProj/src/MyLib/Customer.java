@@ -14,5 +14,10 @@ public class Customer extends User{
         IDCnt +=1;
         this.ID = IDCnt;
     }
+
+    public static String getCustomerName(Customer customer) {
+        String customerName = customer.Fname + " " +customer.Lname;
+        return customerName;
+    }
     
 }
