@@ -16,10 +16,10 @@ public class Management extends javax.swing.JFrame {
     //========== Lots List (New York) ==========
     //public Lots(String lotNum, int lotSize, String lotStatus, int lotLocation)
     Lots LotA1 = new Lots("A1", 17, "Available", 1);
-    Lots LotA2 = new Lots("A2", 18,"Reserved", 2);
+    Lots LotA2 = new Lots("A2", 18,"Available", 2);
     Lots LotA3 = new Lots("A3", 19,"Available", 2);
     Lots LotA4 = new Lots("A4", 20,"Available", 1);
-    Lots LotA5 = new Lots("A5", 21,"Reserved", 2);
+    Lots LotA5 = new Lots("A5", 21,"Available", 2);
     Lots LotA6 = new Lots("A6", 25,"Available", 2);
     Lots LotA7 = new Lots("A7", 26,"Available", 1);
     Lots LotA8 = new Lots("A8", 27,"Sold", 2);
@@ -27,11 +27,11 @@ public class Management extends javax.swing.JFrame {
     Lots LotA10 = new Lots("A10", 29,"Available",2);
     Lots LotA11 = new Lots("A11", 33,"Available",1);
     Lots LotA12 = new Lots("A12", 34,"Sold",2);
-    Lots LotA13 = new Lots("A13", 35,"Reserved",2);
+    Lots LotA13 = new Lots("A13", 35,"Available",2);
     Lots LotA14 = new Lots("A14", 36,"Available",1);
     Lots LotA15 = new Lots("A15", 37,"Available",2);
     Lots LotA16 = new Lots("A16", 47, "Sold", 1);
-    Lots LotA17 = new Lots("A17", 48,"Reserved",1);
+    Lots LotA17 = new Lots("A17", 48,"Available",1);
     Lots LotA18 = new Lots("A18", 49,"Sold", 2);
     Lots LotA19 = new Lots("A19", 50,"Sold", 2);
     Lots LotA20 = new Lots("A20", 51,"Available",1);
@@ -39,9 +39,39 @@ public class Management extends javax.swing.JFrame {
     //========== Lots List (California) ==========
     Lots LotB1 = new Lots("B1", 23, "Available", 1);
     Lots LotB2 = new Lots("B2", 24, "Available", 2);
+    Lots LotB3 = new Lots("B3", 25, "Available", 2);
+    Lots LotB4 = new Lots("B4", 26, "Available", 1);
+    Lots LotB5 = new Lots("B5", 27, "Sold", 1);
+    Lots LotB6 = new Lots("B6", 34, "Available", 2);
+    Lots LotB7 = new Lots("B7", 35, "Available", 2);
+    Lots LotB8 = new Lots("B8", 36, "Sold", 2);
+    Lots LotB9 = new Lots("B9", 37, "Available", 2);
+    Lots LotB10 = new Lots("B10", 38, "Available", 1);
+    Lots LotB11 = new Lots("B11", 49, "Sold", 1);
+    Lots LotB12 = new Lots("B12", 50, "Available", 2);
+    Lots LotB13 = new Lots("B13", 51, "Available", 2);
+    Lots LotB14 = new Lots("B14", 52, "Available", 2);
+    Lots LotB15 = new Lots("B15", 53, "Sold", 1);
+    Lots LotB16 = new Lots("B16", 68, "Available", 2);
+    Lots LotB17 = new Lots("B17", 69, "Sold", 2);
+    Lots LotB18 = new Lots("B18", 70, "Available", 2);
+    Lots LotB19 = new Lots("B19", 71, "Sold", 1);
+    Lots LotB20 = new Lots("B20", 72, "Available", 2);
+    
+    //========== Lots List (Los Angeles) ==========
+    Lots LotC1 = new Lots("C1", 20, "Available", 1);
+    
+    //========== Lots List (Texas) ==========
+    Lots LotD1 = new Lots("D1", 31, "Available", 1);
+    
+    //========== Lots List (Virginia) ==========
+    Lots LotE1 = new Lots("E1", 28, "Available", 1);
         
     ArrayList<Lots> LotsNewYork; //LotsA
     ArrayList<Lots> LotsCalifornia; //LotsB
+    ArrayList<Lots> LotsLosAngeles; //LotsC
+    ArrayList<Lots> LotsTexas; //LotsD
+    ArrayList<Lots> LotsVirginia; //LotsE
     
     
     //========== Blocks List (California) ==========
@@ -59,6 +89,9 @@ public class Management extends javax.swing.JFrame {
         BlocksList = new ArrayList<>();
         LotsNewYork = new ArrayList<>();
         LotsCalifornia = new ArrayList<>();
+        LotsLosAngeles = new ArrayList<>();
+        LotsTexas = new ArrayList<>();
+        LotsVirginia = new ArrayList<>();
         
         LotsNewYork.add(LotA1);
         LotsNewYork.add(LotA2);
@@ -68,16 +101,59 @@ public class Management extends javax.swing.JFrame {
         LotsNewYork.add(LotA6);
         LotsNewYork.add(LotA7);
         LotsNewYork.add(LotA8);
+        LotsNewYork.add(LotA9);
+        LotsNewYork.add(LotA10);
+        LotsNewYork.add(LotA11);
+        LotsNewYork.add(LotA12);
+        LotsNewYork.add(LotA13);
+        LotsNewYork.add(LotA14);
+        LotsNewYork.add(LotA15);
+        LotsNewYork.add(LotA16);
+        LotsNewYork.add(LotA17);
+        LotsNewYork.add(LotA18);
+        LotsNewYork.add(LotA19);
+        LotsNewYork.add(LotA20);
         
         LotsCalifornia.add(LotB1);
         LotsCalifornia.add(LotB2);
+        LotsCalifornia.add(LotB3);
+        LotsCalifornia.add(LotB4);
+        LotsCalifornia.add(LotB5);
+        LotsCalifornia.add(LotB6);
+        LotsCalifornia.add(LotB7);
+        LotsCalifornia.add(LotB8);
+        LotsCalifornia.add(LotB9);
+        LotsCalifornia.add(LotB10);
+        LotsCalifornia.add(LotB11);
+        LotsCalifornia.add(LotB12);
+        LotsCalifornia.add(LotB13);
+        LotsCalifornia.add(LotB14);
+        LotsCalifornia.add(LotB15);
+        LotsCalifornia.add(LotB16);
+        LotsCalifornia.add(LotB17);
+        LotsCalifornia.add(LotB18);
+        LotsCalifornia.add(LotB19);
+        LotsCalifornia.add(LotB20);
+        
+        LotsLosAngeles.add(LotC1);
+        
+        LotsTexas.add(LotD1);
+        
+        LotsVirginia.add(LotE1);
         
         //set lots of block
         BlockA.setLotsArray(LotsNewYork);
         BlockB.setLotsArray(LotsCalifornia);
+        BlockC.setLotsArray(LotsLosAngeles);
+        BlockD.setLotsArray(LotsTexas);
+        BlockE.setLotsArray(LotsVirginia);
         
-        BlocksList.add(BlockA);
-        BlocksList.add(BlockB);
+        //Add blocks into an array to create an index
+        BlocksList.add(BlockA);//New York
+        BlocksList.add(BlockB);//California
+        BlocksList.add(BlockC);//Los Angeles
+        BlocksList.add(BlockD);//Texas
+        BlocksList.add(BlockE);//Virginia
         
         dtm = new DefaultTableModel(header,0);//instantiate table
         jTable1.setModel(dtm);
@@ -86,12 +162,21 @@ public class Management extends javax.swing.JFrame {
         //clears the table
         dtm.setRowCount(0); 
         
-        //Add data from lots array into Jframe table
-        for (int i = 0; i<LotsNewYork.size(); i++){
-            Object[] lots = {LotsNewYork.get(i).getLotNum(), LotsNewYork.get(i).getLotSize(), LotsNewYork.get(i).getPrice(),LotsNewYork.get(i).getLotStatus(), LotsNewYork.get(i).getLotLocation()};
-            dtm.addRow(lots);
+        for(int x = 0; x<BlocksList.size(); x++){
+            Blocks CurrentBlock = BlocksList.get(x);
+            System.out.println("Current Block: " + CurrentBlock.getAddress());
+            
+            ArrayList<Lots> LotsArray = CurrentBlock.getLotsArray();
+            //System.out.println("Current Lots Array: " + );
+            System.out.println("Lots Array Size: " + LotsArray.size());
+            
+            //Add data from lots array into Jframe table
+            for (int i = 0; i<LotsArray.size(); i++){
+                Object[] lots = {LotsArray.get(i).getLotNum(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
+                dtm.addRow(lots);
+            }
+            System.out.println("Loop: " + x);
         }
-        
     }
 
     /**
@@ -117,10 +202,10 @@ public class Management extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        PriceInputField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        SizeInputField = new javax.swing.JTextField();
         BlockAreaInput = new javax.swing.JComboBox<>();
         Search = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -192,10 +277,9 @@ public class Management extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Block Area:");
 
-        jTextField6.setText(" ");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        PriceInputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                PriceInputFieldActionPerformed(evt);
             }
         });
 
@@ -205,14 +289,13 @@ public class Management extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Size:");
 
-        jTextField7.setText(" ");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        SizeInputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                SizeInputFieldActionPerformed(evt);
             }
         });
 
-        BlockAreaInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York", "California", "Los Angeles", "Texas", "Virginia" }));
+        BlockAreaInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York", "California", "Los Angeles", "Texas", "Virginia", "Any" }));
         BlockAreaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlockAreaInputActionPerformed(evt);
@@ -265,8 +348,8 @@ public class Management extends javax.swing.JFrame {
                                             .addComponent(jLabel9))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                            .addComponent(PriceInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                            .addComponent(SizeInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                                             .addComponent(BlockAreaInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(149, 149, 149)
@@ -310,12 +393,12 @@ public class Management extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PriceInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SizeInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,36 +439,101 @@ public class Management extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void PriceInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceInputFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_PriceInputFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void SizeInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SizeInputFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_SizeInputFieldActionPerformed
 
     private void BlockAreaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlockAreaInputActionPerformed
-        //get value from selected input
-        int AreaInput = BlockAreaInput.getSelectedIndex();
        
     }//GEN-LAST:event_BlockAreaInputActionPerformed
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         //Search the lots based on specifications
+        Integer PriceInput; 
+        Double SizeInput;
+        Blocks SelectedBlock = null;
+        //Null check for price, If textfield is NOT empty, do the following
+        if(PriceInputField.getText().equals(" ") || PriceInputField.getText().equals(""))
+            PriceInput = null;
+        else
+            PriceInput = Integer.parseInt(PriceInputField.getText());
+        //Null check for size
+        if(SizeInputField.getText().equals(" ") || SizeInputField.getText().equals(""))
+            SizeInput = null;
+        else
+            SizeInput = Double.parseDouble(SizeInputField.getText());
+        //check for block
         int AreaInput = BlockAreaInput.getSelectedIndex();
-        Blocks SelectedBlock = BlocksList.get(AreaInput);
+        System.out.println(AreaInput);
+        
+        //Checks if selected area is any
+        if (AreaInput !=5)
+            SelectedBlock = BlocksList.get(AreaInput);
+        else
+            AreaInput = 5;
+        
+        //debug price
+        System.out.println("Input Price: "+PriceInput);
         
         //clears the table
         dtm.setRowCount(0); 
         
-        //Add data from lots array into Jframe table
-        for (int i = 0; i<SelectedBlock.getLotsArray().size(); i++){
+        //if selected area is not any, display following block
+        if(AreaInput !=5){
+            for (int i = 0; i<SelectedBlock.getLotsArray().size(); i++){
             ArrayList<Lots> SelectedArray = SelectedBlock.getLotsArray();
             
-            Object[] lots = {SelectedArray.get(i).getLotNum(), SelectedArray.get(i).getLotSize(), SelectedArray.get(i).getPrice(),SelectedArray.get(i).getLotStatus(), SelectedArray.get(i).getLotLocation()};
-            dtm.addRow(lots);
+            Object[] lots = {SelectedArray.get(i).getLotNum(), SelectedArray.get(i).getLotSize(), SelectedArray.get(i).getPrice(),SelectedArray.get(i).getLotStatus(), SelectedArray.get(i).getLotLocation(), SelectedBlock.getAddress()};
+          
+                //If both Price and Size input is empty, display everything
+                if(PriceInput == null && SizeInput == null){
+                    dtm.addRow(lots);
+                }
+                //If both Price and Size input is NOT empty
+                else if(PriceInput != null && SizeInput != null){
+                    //If price input is not null AND input price is equal to lot's price, add row to table
+                    if(PriceInput.equals(SelectedArray.get(i).getPrice()) && SizeInput.equals(SelectedArray.get(i).getLotSize())){
+                        dtm.addRow(lots);
+                    }
+                }
+                //If Price input is not empty but Size input is empty
+                else if (PriceInput != null && SizeInput == null){
+                    //If price input is not null AND input price is equal to lot's price, add row to table
+                    if(PriceInput.equals(SelectedArray.get(i).getPrice())){
+                        dtm.addRow(lots);
+                    }
+                }
+                //If Price input is empty but Size input is NOT empty
+                else if (PriceInput == null && SizeInput != null){
+                    //If size is equal to lot's price, add row to table
+                    if(SizeInput.equals(SelectedArray.get(i).getLotSize())){
+                        dtm.addRow(lots);
+                    }
+                }
+                System.out.println("Loop has ended: " + i);
+            }
         }
-        
+        else if(AreaInput==5){
+            for(int x = 0; x<BlocksList.size(); x++){
+                Blocks CurrentBlock = BlocksList.get(x);
+                System.out.println("Current Block: " + CurrentBlock.getAddress());
+
+                ArrayList<Lots> LotsArray = CurrentBlock.getLotsArray();
+                //System.out.println("Current Lots Array: " + );
+                System.out.println("Lots Array Size: " + LotsArray.size());
+
+                //Add data from lots array into Jframe table
+                for (int i = 0; i<LotsArray.size(); i++){
+                    Object[] lots = {LotsArray.get(i).getLotNum(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
+                    dtm.addRow(lots);
+                }
+                System.out.println("Loop: " + x);
+            }
+        }
     }//GEN-LAST:event_SearchActionPerformed
 
     /**
@@ -432,7 +580,9 @@ public class Management extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BlockAreaInput;
+    private javax.swing.JTextField PriceInputField;
     private javax.swing.JButton Search;
+    private javax.swing.JTextField SizeInputField;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -451,7 +601,5 @@ public class Management extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

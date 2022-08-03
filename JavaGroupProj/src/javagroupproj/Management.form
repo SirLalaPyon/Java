@@ -78,8 +78,8 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField6" alignment="0" pref="194" max="32767" attributes="0"/>
-                                              <Component id="jTextField7" alignment="0" pref="194" max="32767" attributes="0"/>
+                                              <Component id="PriceInputField" alignment="0" pref="194" max="32767" attributes="0"/>
+                                              <Component id="SizeInputField" alignment="0" pref="194" max="32767" attributes="0"/>
                                               <Component id="BlockAreaInput" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -140,13 +140,13 @@
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField6" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="PriceInputField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField7" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="SizeInputField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -300,12 +300,9 @@
             <Property name="text" type="java.lang.String" value="Block Area:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="PriceInputField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PriceInputFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -324,23 +321,21 @@
             <Property name="text" type="java.lang.String" value="Size:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="SizeInputField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SizeInputFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="BlockAreaInput">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
+              <StringArray count="6">
                 <StringItem index="0" value="New York"/>
                 <StringItem index="1" value="California"/>
                 <StringItem index="2" value="Los Angeles"/>
                 <StringItem index="3" value="Texas"/>
                 <StringItem index="4" value="Virginia"/>
+                <StringItem index="5" value="Any"/>
               </StringArray>
             </Property>
           </Properties>

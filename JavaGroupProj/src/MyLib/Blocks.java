@@ -18,6 +18,14 @@ public class Blocks {
     public ArrayList<Lots> getLotsArray() {
         return LotsArray;
     }
+
+    public String getBlockName() {
+        return blockName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
     
     //========== Setters ==========
     public void setLotsArray(ArrayList<Lots> LotsArray) {

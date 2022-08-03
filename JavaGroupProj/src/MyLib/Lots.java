@@ -68,7 +68,7 @@ public class Lots {
         return lotSize;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
     
