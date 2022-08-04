@@ -1,7 +1,7 @@
 package MyLib;
 
 public class Lots {
-    private String lotNum;
+    private String lotID;
     private int lotSize; //in m^2
     private int price;//Price is automatically calculated
     private String lotStatus;//Available, Reserved, Sold
@@ -9,7 +9,7 @@ public class Lots {
     private String lotArea;//New York, 
 
     public Lots(String lotNum, int lotSize, String lotStatus, int lotLocation) {
-        this.lotNum = lotNum;
+        this.lotID = lotNum;
         this.lotSize = lotSize;
         
         //Validate status if input is within available choices
@@ -60,8 +60,8 @@ public class Lots {
     public String getLotStatus() {
         return lotStatus;
     }
-    public String getLotNum() {
-        return lotNum;
+    public String getLotID() {
+        return lotID;
     }
 
     public double getLotSize() {

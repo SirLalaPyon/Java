@@ -2,6 +2,7 @@ package javagroupproj;
 
 import MyLib.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -61,13 +62,70 @@ public class Management extends javax.swing.JFrame {
     Lots LotB20 = new Lots("B20", 72, "Available", 2);
     
     //========== Lots List (Los Angeles) ==========
-    Lots LotC1 = new Lots("C1", 20, "Available", 1);
+    Lots LotC1 = new Lots("C1", 20, "Sold", 1);
+    Lots LotC2 = new Lots("C2", 21, "Available", 2);
+    Lots LotC3 = new Lots("C3", 22, "Available", 1);
+    Lots LotC4 = new Lots("C4", 23, "Sold", 1);
+    Lots LotC5 = new Lots("C5", 24, "Available", 2);
+    Lots LotC6 = new Lots("C6", 28, "Available", 1);
+    Lots LotC7 = new Lots("C7", 29, "Sold", 1);
+    Lots LotC8 = new Lots("C8", 30, "Available", 2);
+    Lots LotC9 = new Lots("C9", 31, "Available", 1);
+    Lots LotC10 = new Lots("C10", 32, "Sold", 1);
+    Lots LotC11 = new Lots("C11", 36, "Available", 1);
+    Lots LotC12 = new Lots("C12", 37, "Available", 2);
+    Lots LotC13 = new Lots("C13", 38, "Available", 1);
+    Lots LotC14 = new Lots("C14", 39, "Sold", 1);
+    Lots LotC15 = new Lots("C15", 40, "Available", 1);
+    Lots LotC16 = new Lots("C16", 45, "Available", 1);
+    Lots LotC17 = new Lots("C17", 46, "Available", 2);
+    Lots LotC18 = new Lots("C18", 47, "Sold", 1);
+    Lots LotC19 = new Lots("C19", 48, "Available", 1);
+    Lots LotC20 = new Lots("C20", 49, "Available", 2);
     
     //========== Lots List (Texas) ==========
     Lots LotD1 = new Lots("D1", 31, "Available", 1);
+    Lots LotD2 = new Lots("D2", 32, "Available", 1);
+    Lots LotD3 = new Lots("D3", 34, "Sold", 2);
+    Lots LotD4 = new Lots("D4", 35, "Available", 1);
+    Lots LotD5 = new Lots("D5", 36, "Available", 2);
+    Lots LotD6 = new Lots("D6", 41, "Sold", 2);
+    Lots LotD7 = new Lots("D7", 42, "Available", 1);
+    Lots LotD8 = new Lots("D8", 43, "Available", 2);
+    Lots LotD9 = new Lots("D9", 44, "Available", 1);
+    Lots LotD10 = new Lots("D10", 45, "Available", 1);
+    Lots LotD11 = new Lots("D11", 52, "Sold", 1);
+    Lots LotD12 = new Lots("D12", 53, "Available", 1);
+    Lots LotD13 = new Lots("D13", 54, "Available", 2);
+    Lots LotD14 = new Lots("D14", 55, "Available", 1);
+    Lots LotD15 = new Lots("D15", 56, "Sold", 1);
+    Lots LotD16 = new Lots("D16", 62, "Available", 2);
+    Lots LotD17 = new Lots("D17", 63, "Available", 1);
+    Lots LotD18 = new Lots("D18", 64, "Sold", 1);
+    Lots LotD19 = new Lots("D19", 65, "Available", 1);
+    Lots LotD20 = new Lots("D20", 66, "Available", 2);
     
     //========== Lots List (Virginia) ==========
-    Lots LotE1 = new Lots("E1", 28, "Available", 1);
+    Lots LotE1 = new Lots("E1", 28, "Sold", 1);
+    Lots LotE2 = new Lots("E2", 29, "Available", 2);
+    Lots LotE3 = new Lots("E3", 30, "Sold", 1);
+    Lots LotE4 = new Lots("E4", 31, "Available", 1);
+    Lots LotE5 = new Lots("E5", 32, "Available", 2);
+    Lots LotE6 = new Lots("E6", 39, "Sold", 1);
+    Lots LotE7 = new Lots("E7", 40, "Available", 1);
+    Lots LotE8 = new Lots("E8", 41, "Available", 2);
+    Lots LotE9 = new Lots("E9", 42, "Sold", 1);
+    Lots LotE10 = new Lots("E10", 43, "Available", 1);
+    Lots LotE11 = new Lots("E11", 46, "Available", 1);
+    Lots LotE12 = new Lots("E12", 47, "Available", 2);
+    Lots LotE13 = new Lots("E13", 48, "Available", 1);
+    Lots LotE14 = new Lots("E14", 49, "Sold", 1);
+    Lots LotE15 = new Lots("E15", 50, "Available", 1);
+    Lots LotE16 = new Lots("E16", 55, "Sold", 1);
+    Lots LotE17 = new Lots("E17", 56, "Sold", 2);
+    Lots LotE18 = new Lots("E18", 57, "Available", 1);
+    Lots LotE19 = new Lots("E19", 58, "Sold", 1);
+    Lots LotE20 = new Lots("E20", 59, "Available", 2);
         
     ArrayList<Lots> LotsNewYork; //LotsA
     ArrayList<Lots> LotsCalifornia; //LotsB
@@ -88,7 +146,10 @@ public class Management extends javax.swing.JFrame {
     DefaultTableModel dtm, dtmCustomer;
     int row, col;
     
-    
+
+    Patrons Patronlist = new Patrons();
+    String[] TempPatronList = new String[20];
+    int tempcnt;
     
     public static Overview overviewFrame = new Overview();
     
@@ -149,10 +210,67 @@ public class Management extends javax.swing.JFrame {
         LotsCalifornia.add(LotB20);
         
         LotsLosAngeles.add(LotC1);
+        LotsLosAngeles.add(LotC2);
+        LotsLosAngeles.add(LotC3);
+        LotsLosAngeles.add(LotC4);
+        LotsLosAngeles.add(LotC5);
+        LotsLosAngeles.add(LotC6);
+        LotsLosAngeles.add(LotC7);
+        LotsLosAngeles.add(LotC8);
+        LotsLosAngeles.add(LotC9);
+        LotsLosAngeles.add(LotC10);
+        LotsLosAngeles.add(LotC11);
+        LotsLosAngeles.add(LotC12);
+        LotsLosAngeles.add(LotC13);
+        LotsLosAngeles.add(LotC14);
+        LotsLosAngeles.add(LotC15);
+        LotsLosAngeles.add(LotC16);
+        LotsLosAngeles.add(LotC17);
+        LotsLosAngeles.add(LotC18);
+        LotsLosAngeles.add(LotC19);
+        LotsLosAngeles.add(LotC20);
         
         LotsTexas.add(LotD1);
+        LotsTexas.add(LotD2);
+        LotsTexas.add(LotD3);
+        LotsTexas.add(LotD4);
+        LotsTexas.add(LotD5);
+        LotsTexas.add(LotD6);
+        LotsTexas.add(LotD7);
+        LotsTexas.add(LotD8);
+        LotsTexas.add(LotD9);
+        LotsTexas.add(LotD10);
+        LotsTexas.add(LotD11);
+        LotsTexas.add(LotD12);
+        LotsTexas.add(LotD13);
+        LotsTexas.add(LotD14);
+        LotsTexas.add(LotD15);
+        LotsTexas.add(LotD16);
+        LotsTexas.add(LotD17);
+        LotsTexas.add(LotD18);
+        LotsTexas.add(LotD19);
+        LotsTexas.add(LotD20);
         
         LotsVirginia.add(LotE1);
+        LotsVirginia.add(LotE2);
+        LotsVirginia.add(LotE3);
+        LotsVirginia.add(LotE4);
+        LotsVirginia.add(LotE5);
+        LotsVirginia.add(LotE6);
+        LotsVirginia.add(LotE7);
+        LotsVirginia.add(LotE8);
+        LotsVirginia.add(LotE9);
+        LotsVirginia.add(LotE10);
+        LotsVirginia.add(LotE11);
+        LotsVirginia.add(LotE12);
+        LotsVirginia.add(LotE13);
+        LotsVirginia.add(LotE14);
+        LotsVirginia.add(LotE15);
+        LotsVirginia.add(LotE16);
+        LotsVirginia.add(LotE17);
+       LotsVirginia.add(LotE18);
+       LotsVirginia.add(LotE19);
+       LotsVirginia.add(LotE20);
         
         //set lots of block
         BlockA.setLotsArray(LotsNewYork);
@@ -189,7 +307,7 @@ public class Management extends javax.swing.JFrame {
             
             //Add data from lots array into Jframe table
             for (int i = 0; i<LotsArray.size(); i++){
-                Object[] lots = {LotsArray.get(i).getLotNum(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
+                Object[] lots = {LotsArray.get(i).getLotID(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
                 dtm.addRow(lots);
             }
             System.out.println("Loop: " + x);
@@ -199,7 +317,7 @@ public class Management extends javax.swing.JFrame {
         overviewFrame.setVisible(false);
         overviewFrame.pack();
         overviewFrame.setLocationRelativeTo(null);
-        //overviewFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        overviewFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     
     //Call to add customer instances created from jframe to accessible static customer list of main function
@@ -247,6 +365,11 @@ public class Management extends javax.swing.JFrame {
         Enlist = new javax.swing.JButton();
         SelectedCustomerField = new javax.swing.JTextField();
         Overview = new javax.swing.JButton();
+        AddtoPatrons = new javax.swing.JButton();
+        PatronMessage = new javax.swing.JTextField();
+        SetPatronMessage = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        NotifyPatrons = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -404,6 +527,29 @@ public class Management extends javax.swing.JFrame {
             }
         });
 
+        AddtoPatrons.setText("Add to Patrons");
+        AddtoPatrons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddtoPatronsActionPerformed(evt);
+            }
+        });
+
+        SetPatronMessage.setText("Set Patron Message");
+        SetPatronMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetPatronMessageActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Patron Message:");
+
+        NotifyPatrons.setText("Notify Patrons");
+        NotifyPatrons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotifyPatronsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -411,11 +557,11 @@ public class Management extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel5))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
@@ -428,20 +574,25 @@ public class Management extends javax.swing.JFrame {
                                         .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(FirstNameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(LastNameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(EmailField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(NumberField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addComponent(jLabel5)))))
+                                    .addComponent(FirstNameField)
+                                    .addComponent(LastNameField)
+                                    .addComponent(EmailField)
+                                    .addComponent(NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(AddtoPatrons, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PatronMessage)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(SetPatronMessage)
+                                .addGap(6, 6, 6))
+                            .addComponent(jLabel10)
+                            .addComponent(NotifyPatrons, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(32, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,7 +617,11 @@ public class Management extends javax.swing.JFrame {
                                             .addComponent(SizeInputField)
                                             .addComponent(BlockAreaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(SelectedCustomerField, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(93, 93, 93))))
+                        .addGap(93, 93, 93))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,12 +669,22 @@ public class Management extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SelectedCustomerField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
+                    .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddtoPatrons, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PatronMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SetPatronMessage)
+                        .addGap(113, 113, 113)
+                        .addComponent(NotifyPatrons))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -584,7 +749,7 @@ public class Management extends javax.swing.JFrame {
             for (int i = 0; i<SelectedBlock.getLotsArray().size(); i++){
             ArrayList<Lots> SelectedArray = SelectedBlock.getLotsArray();
             
-            Object[] lots = {SelectedArray.get(i).getLotNum(), SelectedArray.get(i).getLotSize(), SelectedArray.get(i).getPrice(),SelectedArray.get(i).getLotStatus(), SelectedArray.get(i).getLotLocation(), SelectedBlock.getAddress()};
+            Object[] lots = {SelectedArray.get(i).getLotID(), SelectedArray.get(i).getLotSize(), SelectedArray.get(i).getPrice(),SelectedArray.get(i).getLotStatus(), SelectedArray.get(i).getLotLocation(), SelectedBlock.getAddress()};
           
                 //If both Price and Size input is empty, display everything
                 if(PriceInput == null && SizeInput == null){
@@ -625,7 +790,7 @@ public class Management extends javax.swing.JFrame {
 
                 //Add data from lots array into Jframe table
                 for (int i = 0; i<LotsArray.size(); i++){
-                    Object[] lots = {LotsArray.get(i).getLotNum(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
+                    Object[] lots = {LotsArray.get(i).getLotID(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
                     dtm.addRow(lots);
                 }
                 System.out.println("Loop: " + x);
@@ -687,7 +852,7 @@ public class Management extends javax.swing.JFrame {
                 
                 //Search for lot
                 for(Lots lot: currentBlock.getLotsArray()){
-                    if(lot.getLotNum().equals(selectedLotID)){
+                    if(lot.getLotID().equals(selectedLotID)){
                         currentLot=lot;
                         currentLot.setLotStatus("Sold");
                         
@@ -703,7 +868,7 @@ public class Management extends javax.swing.JFrame {
             }
             
             String customerNameConcat = customerToOverview.getFname() + " " + customerToOverview.getFname();
-            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotNum(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
+            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotID(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
             
             overviewFrame.AddRowToJTable(toOverview);
             
@@ -767,7 +932,7 @@ public class Management extends javax.swing.JFrame {
                 
                 //Search for lot
                 for(Lots lot: currentBlock.getLotsArray()){
-                    if(lot.getLotNum().equals(selectedLotID)){
+                    if(lot.getLotID().equals(selectedLotID)){
                         currentLot=lot;
                         currentLot.setLotStatus("Reserved");
                         
@@ -783,7 +948,7 @@ public class Management extends javax.swing.JFrame {
             }
             
             String customerNameConcat = customerToOverview.getFname() + " " + customerToOverview.getFname();
-            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotNum(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
+            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotID(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
             
             overviewFrame.AddRowToJTable(toOverview);
             
@@ -871,6 +1036,42 @@ public class Management extends javax.swing.JFrame {
             overviewFrame.setVisible(true);
     }//GEN-LAST:event_OverviewActionPerformed
 
+    private void AddtoPatronsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoPatronsActionPerformed
+        // TODO add your handling code here:
+        String Fname = FirstNameField.getText();
+        String Lname = LastNameField.getText();
+
+        Patronlist.subscribe(new LotUpdates(Patronlist, Fname, Lname));
+        TempPatronList[tempcnt] = Lname + ", " + Fname;
+        tempcnt++;
+    }//GEN-LAST:event_AddtoPatronsActionPerformed
+
+    private void SetPatronMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetPatronMessageActionPerformed
+        // TODO add your handling code here:
+        String PatronMSG = PatronMessage.getText();
+        Patronlist.setNewlotupdate(PatronMSG);
+    }//GEN-LAST:event_SetPatronMessageActionPerformed
+
+    private void NotifyPatronsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotifyPatronsActionPerformed
+        // TODO add your handling code here:
+        String AppendedList = "\n";
+        int j = 1;
+        
+        for (int i = 0; i < tempcnt ; i++) {
+            j++;
+            
+            if (j == tempcnt) {
+                AppendedList = AppendedList + TempPatronList[i];
+                break;
+            }
+            AppendedList = AppendedList + TempPatronList[i] + "\n";
+        }
+        
+        Patronlist.notifyPatrons();
+        JOptionPane.showMessageDialog(this, "Subscribed Patrons have been notified: " 
+                + AppendedList + "\n With the message: " + Patronlist.getNewlotupdate());
+    }//GEN-LAST:event_NotifyPatronsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -914,20 +1115,25 @@ public class Management extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddtoPatrons;
     private javax.swing.JComboBox<String> BlockAreaInput;
     private javax.swing.JButton Buy;
     private javax.swing.JTextField EmailField;
     private javax.swing.JButton Enlist;
     private javax.swing.JTextField FirstNameField;
     private javax.swing.JTextField LastNameField;
+    private javax.swing.JButton NotifyPatrons;
     private javax.swing.JTextField NumberField;
     private javax.swing.JButton Overview;
+    private javax.swing.JTextField PatronMessage;
     private javax.swing.JTextField PriceInputField;
     private javax.swing.JButton Reserve;
     private javax.swing.JButton Search;
     private javax.swing.JTextField SelectedCustomerField;
+    private javax.swing.JButton SetPatronMessage;
     private javax.swing.JTextField SizeInputField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

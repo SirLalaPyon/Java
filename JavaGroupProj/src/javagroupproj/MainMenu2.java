@@ -1,5 +1,6 @@
 package javagroupproj;
 
+import java.awt.Cursor;
 import static javagroupproj.Management.overviewFrame;
 import javax.swing.JFrame;
 
@@ -14,10 +15,12 @@ public class MainMenu2 extends javax.swing.JFrame {
         overviewFrame.setVisible(false);
         overviewFrame.pack();
         overviewFrame.setLocationRelativeTo(null);
+        overviewFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         management = new Management();
         management.pack();
         management.setLocationRelativeTo(null);
+        management.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -29,17 +32,31 @@ public class MainMenu2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         ManagementIcon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ManagementButton = new javax.swing.JButton();
+        EstateManagementFrame = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         ManagementIcon2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        OverviewButton = new javax.swing.JButton();
+        EstateOverviewFrame = new javax.swing.JLabel();
+
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,137 +65,75 @@ public class MainMenu2 extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(167, 219, 194));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 152, 158), 6, true));
         jPanel3.setForeground(new java.awt.Color(3, 152, 158));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ManagementIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManagementIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_gear_100px.png"))); // NOI18N
+        jPanel3.add(ManagementIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(223, 252, 197));
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(223, 252, 197));
+        jLabel1.setForeground(new java.awt.Color(60, 63, 65));
         jLabel1.setText("Management");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
-        jLabel2.setBackground(new java.awt.Color(223, 252, 197));
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(223, 252, 197));
+        jLabel2.setForeground(new java.awt.Color(60, 63, 65));
         jLabel2.setText("Estate");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
-        ManagementButton.setText("Go");
-        ManagementButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagementButtonActionPerformed(evt);
+        EstateManagementFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EstateManagementFrameMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(ManagementIcon)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(ManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(ManagementIcon)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        jPanel3.add(EstateManagementFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 300));
 
         jPanel5.setBackground(new java.awt.Color(167, 219, 194));
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 152, 158), 6, true));
         jPanel5.setForeground(new java.awt.Color(3, 152, 158));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ManagementIcon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManagementIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/OverviewIcon_100px.png"))); // NOI18N
+        jPanel5.add(ManagementIcon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 31, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(223, 252, 197));
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(223, 252, 197));
+        jLabel5.setForeground(new java.awt.Color(60, 63, 65));
         jLabel5.setText("Overview");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 197, -1, 42));
 
-        jLabel6.setBackground(new java.awt.Color(223, 252, 197));
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(223, 252, 197));
+        jLabel6.setForeground(new java.awt.Color(60, 63, 65));
         jLabel6.setText("Estate");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 143, -1, -1));
 
-        OverviewButton.setText("Go");
-        OverviewButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OverviewButtonActionPerformed(evt);
+        EstateOverviewFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EstateOverviewFrameMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(ManagementIcon2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(OverviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(ManagementIcon2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(OverviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jPanel5.add(EstateOverviewFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 300));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,16 +150,15 @@ public class MainMenu2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagementButtonActionPerformed
-        //
-        
+    private void EstateManagementFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstateManagementFrameMouseClicked
+        // TODO add your handling code here:
         management.setVisible(true);//Display MainMenu 2 page
-    }//GEN-LAST:event_ManagementButtonActionPerformed
+    }//GEN-LAST:event_EstateManagementFrameMouseClicked
 
-    private void OverviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewButtonActionPerformed
-        //
+    private void EstateOverviewFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstateOverviewFrameMouseClicked
+        // TODO add your handling code here:
         overviewFrame.setVisible(true);
-    }//GEN-LAST:event_OverviewButtonActionPerformed
+    }//GEN-LAST:event_EstateOverviewFrameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,14 +199,15 @@ public class MainMenu2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ManagementButton;
+    private javax.swing.JLabel EstateManagementFrame;
+    private javax.swing.JLabel EstateOverviewFrame;
     private javax.swing.JLabel ManagementIcon;
     private javax.swing.JLabel ManagementIcon2;
-    private javax.swing.JButton OverviewButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;

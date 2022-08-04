@@ -20,4 +20,15 @@ public class Patrons implements IPatron{
         for (IObserver observer: Patron)
             observer.update();
     }
+
+    public String getNewlotupdate() {
+        return newlotupdate;
+    }
+
+    public void setNewlotupdate(String newlotupdate) {
+        this.newlotupdate = newlotupdate;
+    }
+    
+    
+    
 }

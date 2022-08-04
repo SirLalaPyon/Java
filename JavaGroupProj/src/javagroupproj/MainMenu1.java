@@ -177,8 +177,9 @@ public class MainMenu1 extends javax.swing.JFrame {
         AdminPasswordInput = AdminPasswordField.getText();
         System.out.println(AdminPasswordInput);
         System.out.println(Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput));  
+        System.out.println(Admin2.VerifyCreds(AdminUsernameInput, AdminPasswordInput)); 
 
-        if (Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput)) {
+        if (Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput)||Admin2.VerifyCreds(AdminUsernameInput, AdminPasswordInput)) {
             MainMenu2 MainMenu2 = new MainMenu2();
             MainMenu2.show();//Display MainMenu 2 page
             dispose();//Close current page
