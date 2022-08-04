@@ -28,12 +28,11 @@ public class Admin extends User{
     public String getPassword() {
         return Password;
     }
+    
+    //Checks if username and password of admin is the same
     public Boolean VerifyCreds(String UName, String Passw) {
-        
-        if (Username.equals(UName)) {
-            if (Password.equals(Passw)){ 
-                return true;
-            }
+        if (Username.equals(UName) && Password.equals(Passw)) {
+            return true;
         }
         return false;     
     }

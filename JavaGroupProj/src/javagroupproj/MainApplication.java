@@ -8,22 +8,13 @@ import static javagroupproj.Management.customerList;
 
 
 public class MainApplication {
-
+    //set up admin profiles
+    public static User Admin1 = new Admin("Elijah", "Tam-od", "elijah@yahoocom", "091234246", "Elijah", "123456");
+    public static User Admin2 = new Admin("Jahnreil", "JahnJahn", "Jahn@yahoocom", "09123424", "Jahnreil","123456");
+    
     public static void main(String[] args) {
-        
         MainMenu1 MainMenu = new MainMenu1();
         MainMenu.setVisible(true);
         MainMenu.setLocationRelativeTo(null);
-        
-        //Display Output
-        //System.out.printf("%-20s %-20s %-20s %-20s\n", "Lot ID", "Lot Size", "Price", "Status");
-        //System.out.printf("------------------------------------------------------------------------\n");
-        
-        //For each type of Lots inside LotsNewYork, print the following
-        //for(Lots lot: LotsNewYork){
-        //    System.out.printf("%-20s %-20s %-20s %-20s\n", lot.getLotNum(), lot.getLotSize(), lot.getPrice(), lot.getLotStatus());
-        //}
-        
     }
-    
 }

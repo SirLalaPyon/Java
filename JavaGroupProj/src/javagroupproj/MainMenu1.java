@@ -1,5 +1,7 @@
 package javagroupproj;
 import MyLib.*;
+import static javagroupproj.MainApplication.Admin1;
+import static javagroupproj.MainApplication.Admin2;
 import javax.swing.JOptionPane;
 
 public class MainMenu1 extends javax.swing.JFrame {
@@ -169,13 +171,14 @@ public class MainMenu1 extends javax.swing.JFrame {
 
     private void SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInActionPerformed
         // Sign in button
-        Admin Admin1 = new Admin("Elijah", "Tam-od", "elijah@yahoocom", "091234246", "Elijah", "123456");
-        Admin Admin2 = new Admin("Jahnreil", "JahnJahn", "Jahn@yahoocom", "09123424", "Jahnreil","123456");
+        //User Admin1 = new Admin("Elijah", "Tam-od", "elijah@yahoocom", "091234246", "Elijah", "123456");
+        //User Admin2 = new Admin("Jahnreil", "JahnJahn", "Jahn@yahoocom", "09123424", "Jahnreil","123456");
         
         AdminUsernameInput = AdminUsernameField.getText();
         System.out.println(AdminUsernameInput);
         AdminPasswordInput = AdminPasswordField.getText();
         System.out.println(AdminPasswordInput);
+        Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput);
         System.out.println(Admin1.VerifyCreds(AdminUsernameInput, AdminPasswordInput));  
         System.out.println(Admin2.VerifyCreds(AdminUsernameInput, AdminPasswordInput)); 
 

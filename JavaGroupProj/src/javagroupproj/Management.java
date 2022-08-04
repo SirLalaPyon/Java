@@ -570,27 +570,32 @@ public class Management extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(FirstNameField)
                                     .addComponent(LastNameField)
                                     .addComponent(EmailField)
-                                    .addComponent(NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(AddtoPatrons, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(NumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(128, 128, 128))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(AddtoPatrons, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(PatronMessage)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(SetPatronMessage)
                                 .addGap(6, 6, 6))
                             .addComponent(jLabel10)
-                            .addComponent(NotifyPatrons, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
+                            .addComponent(NotifyPatrons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -785,13 +790,37 @@ public class Management extends javax.swing.JFrame {
                 System.out.println("Current Block: " + CurrentBlock.getAddress());
 
                 ArrayList<Lots> LotsArray = CurrentBlock.getLotsArray();
-                //System.out.println("Current Lots Array: " + );
                 System.out.println("Lots Array Size: " + LotsArray.size());
 
                 //Add data from lots array into Jframe table
                 for (int i = 0; i<LotsArray.size(); i++){
                     Object[] lots = {LotsArray.get(i).getLotID(), LotsArray.get(i).getLotSize(), LotsArray.get(i).getPrice(),LotsArray.get(i).getLotStatus(), LotsArray.get(i).getLotLocation(), CurrentBlock.getAddress()};
+                    //If both Price and Size input is empty, display everything
+                if(PriceInput == null && SizeInput == null){
                     dtm.addRow(lots);
+                }
+                //If both Price and Size input is NOT empty
+                else if(PriceInput != null && SizeInput != null){
+                    //If price input is not null AND input price is equal to lot's price, add row to table
+                    if(PriceInput.equals(LotsArray.get(i).getPrice()) && SizeInput.equals(LotsArray.get(i).getLotSize())){
+                        dtm.addRow(lots);
+                    }
+                }
+                //If Price input is not empty but Size input is empty
+                else if (PriceInput != null && SizeInput == null){
+                    //If price input is not null AND input price is equal to lot's price, add row to table
+                    if(PriceInput.equals(LotsArray.get(i).getPrice())){
+                        dtm.addRow(lots);
+                    }
+                }
+                //If Price input is empty but Size input is NOT empty
+                else if (PriceInput == null && SizeInput != null){
+                    //If size is equal to lot's price, add row to table
+                    if(SizeInput.equals(LotsArray.get(i).getLotSize())){
+                        dtm.addRow(lots);
+                    }
+                }
+                System.out.println("Loop has ended: " + i);
                 }
                 System.out.println("Loop: " + x);
             }
@@ -1038,12 +1067,18 @@ public class Management extends javax.swing.JFrame {
 
     private void AddtoPatronsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoPatronsActionPerformed
         // TODO add your handling code here:
-        String Fname = FirstNameField.getText();
-        String Lname = LastNameField.getText();
-
-        Patronlist.subscribe(new LotUpdates(Patronlist, Fname, Lname));
-        TempPatronList[tempcnt] = Lname + ", " + Fname;
+        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+        int selectedRowIndex = jTable2.getSelectedRow();
+        
+        Customer selectedCustomer = customerList.get(selectedRowIndex);
+        String selectedCustomerFname = selectedCustomer.getFname();
+        String selectedCustomerLname = selectedCustomer.getLname();
+        
+        Patronlist.subscribe(new LotUpdates(Patronlist, selectedCustomerFname, selectedCustomerLname));
+        TempPatronList[tempcnt] = selectedCustomerFname + ", " + selectedCustomerLname;
         tempcnt++;
+        //Set previous message to newly add patrons
+        String PatronMSG = PatronMessage.getText();
     }//GEN-LAST:event_AddtoPatronsActionPerformed
 
     private void SetPatronMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetPatronMessageActionPerformed
@@ -1055,7 +1090,7 @@ public class Management extends javax.swing.JFrame {
     private void NotifyPatronsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotifyPatronsActionPerformed
         // TODO add your handling code here:
         String AppendedList = "\n";
-        int j = 1;
+        int j = 0;
         
         for (int i = 0; i < tempcnt ; i++) {
             j++;

@@ -9,6 +9,11 @@ public class User {
     protected String PNumber;
     protected int ID;
     
+    
+    public Boolean VerifyCreds(String UName, String Passw) {
+        return true;
+    }
+    
     //=================== Getter ===================
     public String getFname() {
         return Fname;
@@ -30,5 +35,4 @@ public class User {
     public int getID() {
         return ID;
     }
-    
 }
