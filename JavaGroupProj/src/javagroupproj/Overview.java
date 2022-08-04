@@ -6,7 +6,6 @@ public class Overview extends javax.swing.JFrame {
     String headerOverview[] = new String[]{"Customer ID", "Name", "Email", "Phone Number", "Lot ID", "Lot Size", "Lot Price", "Lot Area", "Status"};
     DefaultTableModel dtmOverview;
     
-
     /**
      * Creates new form Overview
      */

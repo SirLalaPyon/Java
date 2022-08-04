@@ -196,8 +196,7 @@ public class Management extends javax.swing.JFrame {
         }
         
         //overview Frame
-        overviewFrame.setVisible(true);
-        System.out.println(overviewFrame.isActive());
+        overviewFrame.setVisible(false);
         overviewFrame.pack();
         overviewFrame.setLocationRelativeTo(null);
         overviewFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -715,8 +714,83 @@ public class Management extends javax.swing.JFrame {
     }//GEN-LAST:event_BuyActionPerformed
     
     private void ReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReserveActionPerformed
-        //
-        JOptionPane.showMessageDialog(this, "Lot has been reserved");
+        // Reserve Button
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel modelCustomer = (DefaultTableModel)jTable2.getModel();
+        Blocks currentBlock = null;
+        Lots currentLot=null;
+        
+        int selectedRowLot = jTable1.getSelectedRow();
+        int selectedRowCustomer = jTable2.getSelectedRow();
+        
+        Customer customerToOverview = null;
+        
+        String selectedLotID = model.getValueAt(selectedRowLot, 0).toString();
+        String selectedLotSize = model.getValueAt(selectedRowLot, 1).toString();
+        String selectedLotPrice = model.getValueAt(selectedRowLot, 2).toString();
+        String selectedLotArea = model.getValueAt(selectedRowLot, 5).toString();
+        String selectedLotAvailability = model.getValueAt(selectedRowLot, 3).toString();
+        
+        int selectedCustomerID = Integer.parseInt(modelCustomer.getValueAt(selectedRowCustomer, 0).toString());
+        String customerName = SelectedCustomerField.getText();
+        
+        //Find block of selected lot
+        for(Blocks block: BlocksList){
+            if(block.getAddress().equals(selectedLotArea))
+                currentBlock=block;
+        }
+        
+        if(selectedLotAvailability.equals("Sold")||selectedLotAvailability.equals("Reserved")){
+            JOptionPane.showMessageDialog(this, "This lots is unavailable, please choose another lot");
+        }
+        else{
+            //searches for each cutomer inside customerList; if selected customer on jframe and customer inside customerList has the same ID, set customerToOverview = customer
+            System.out.println("before the search loop");
+            for(Customer cus: customerList){
+                int cnt=1;
+                System.out.println("Current customer is "+ cus.getFname());
+                System.out.println("Search Customer ID: "+ cus.getID());
+                System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                if(cus.getID() == selectedCustomerID){
+                    System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                    customerToOverview = cus;
+                    System.out.println("Inside the first loop: "+customerToOverview.getFname());
+                    JOptionPane.showMessageDialog(this, "Customer: " + customerName + "\n" + 
+                                                "Lot: " + selectedLotID + "\n" +
+                                                "Size: " + selectedLotSize + "\n" +
+                                                "Area: " + selectedLotArea + "\n" +
+                                                "Price: " + selectedLotPrice);
+                }
+                else if(!(cus.getID() == (selectedCustomerID +1))){
+                    System.out.println("No match for loop: " +cnt);
+                }
+                
+                //Search for lot
+                for(Lots lot: currentBlock.getLotsArray()){
+                    if(lot.getLotNum().equals(selectedLotID)){
+                        currentLot=lot;
+                        currentLot.setLotStatus("Reserved");
+                        
+                        model.setValueAt("Reserved", selectedRowLot, 3);
+                    }
+                }
+                if(cus.getID() == selectedCustomerID){
+                    System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                    customerToOverview = cus;
+                    System.out.println("Inside the first loop: "+customerToOverview.getFname());
+                cnt++;
+                }
+            }
+            
+            String customerNameConcat = customerToOverview.getFname() + " " + customerToOverview.getFname();
+            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotNum(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
+            
+            overviewFrame.AddRowToJTable(toOverview);
+            
+            System.out.println("after the search loop");
+            //Receipt
+            
+        }
     }//GEN-LAST:event_ReserveActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -788,7 +862,13 @@ public class Management extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectedCustomerFieldActionPerformed
 
     private void OverviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewActionPerformed
-        // TODO add your handling code here:
+        //Show or Hide Overview table
+        System.out.println(overviewFrame.isVisible());
+        
+        if(overviewFrame.isVisible())
+            overviewFrame.setVisible(false);
+        else if(!overviewFrame.isVisible())
+            overviewFrame.setVisible(true);
     }//GEN-LAST:event_OverviewActionPerformed
 
     /**
