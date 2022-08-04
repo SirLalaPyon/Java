@@ -1,12 +1,23 @@
 package javagroupproj;
 
-public class MainMenu2 extends javax.swing.JFrame {
+import static javagroupproj.Management.overviewFrame;
+import javax.swing.JFrame;
 
+public class MainMenu2 extends javax.swing.JFrame {
+    
+    public static Management management = new Management();
     /**
      * Creates new form MainFrame
      */
     public MainMenu2() {
         initComponents();
+        overviewFrame.setVisible(false);
+        overviewFrame.pack();
+        overviewFrame.setLocationRelativeTo(null);
+        
+        management = new Management();
+        management.pack();
+        management.setLocationRelativeTo(null);
     }
 
     /**
@@ -109,6 +120,11 @@ public class MainMenu2 extends javax.swing.JFrame {
         jLabel6.setText("Estate");
 
         OverviewButton.setText("Go");
+        OverviewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OverviewButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -180,10 +196,15 @@ public class MainMenu2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagementButtonActionPerformed
-        // TODO add your handling code here:
-        Management Management = new Management();
-        Management.show();//Display MainMenu 2 page
+        //
+        
+        management.setVisible(true);//Display MainMenu 2 page
     }//GEN-LAST:event_ManagementButtonActionPerformed
+
+    private void OverviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewButtonActionPerformed
+        //
+        overviewFrame.setVisible(true);
+    }//GEN-LAST:event_OverviewButtonActionPerformed
 
     /**
      * @param args the command line arguments

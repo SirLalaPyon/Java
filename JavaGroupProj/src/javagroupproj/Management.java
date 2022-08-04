@@ -90,7 +90,7 @@ public class Management extends javax.swing.JFrame {
     
     
     
-    Overview overviewFrame = new Overview();
+    public static Overview overviewFrame = new Overview();
     
     /**
      * Creates new form MainFrame
@@ -199,7 +199,7 @@ public class Management extends javax.swing.JFrame {
         overviewFrame.setVisible(false);
         overviewFrame.pack();
         overviewFrame.setLocationRelativeTo(null);
-        overviewFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //overviewFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     
     //Call to add customer instances created from jframe to accessible static customer list of main function
