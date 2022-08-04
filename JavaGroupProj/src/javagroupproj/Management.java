@@ -2,6 +2,7 @@ package javagroupproj;
 
 import MyLib.*;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,6 +87,11 @@ public class Management extends javax.swing.JFrame {
     String headerCustomer[] = new String[]{"ID", "First Name", "Last Name", "Email", "Number"};
     DefaultTableModel dtm, dtmCustomer;
     int row, col;
+    
+    
+    
+    Overview overviewFrame = new Overview();
+    
     /**
      * Creates new form MainFrame
      */
@@ -188,6 +194,13 @@ public class Management extends javax.swing.JFrame {
             }
             System.out.println("Loop: " + x);
         }
+        
+        //overview Frame
+        overviewFrame.setVisible(true);
+        System.out.println(overviewFrame.isActive());
+        overviewFrame.pack();
+        overviewFrame.setLocationRelativeTo(null);
+        overviewFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     //Call to add customer instances created from jframe to accessible static customer list of main function
@@ -234,6 +247,7 @@ public class Management extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         Enlist = new javax.swing.JButton();
         SelectedCustomerField = new javax.swing.JTextField();
+        Overview = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -384,6 +398,13 @@ public class Management extends javax.swing.JFrame {
             }
         });
 
+        Overview.setText("Overview");
+        Overview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OverviewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -396,20 +417,23 @@ public class Management extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
-                                    .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(FirstNameField, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(LastNameField, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(EmailField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(NumberField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(NumberField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(jLabel5)))))
@@ -490,7 +514,8 @@ public class Management extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Enlist, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SelectedCustomerField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SelectedCustomerField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
@@ -608,32 +633,87 @@ public class Management extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SearchActionPerformed
-
+    
     private void BuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyActionPerformed
         // Buy Button
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        int selectedRowIndex = jTable1.getSelectedRow();
+        DefaultTableModel modelCustomer = (DefaultTableModel)jTable2.getModel();
+        Blocks currentBlock = null;
+        Lots currentLot=null;
         
-        String selectedLotID = model.getValueAt(selectedRowIndex, 0).toString();
-        String selectedLotSize = model.getValueAt(selectedRowIndex, 1).toString();
-        String selectedLotPrice = model.getValueAt(selectedRowIndex, 2).toString();
-        String selectedLotArea = model.getValueAt(selectedRowIndex, 5).toString();
-        String selectedLotAvailability = model.getValueAt(selectedRowIndex, 3).toString();
+        int selectedRowLot = jTable1.getSelectedRow();
+        int selectedRowCustomer = jTable2.getSelectedRow();
+        
+        Customer customerToOverview = null;
+        
+        String selectedLotID = model.getValueAt(selectedRowLot, 0).toString();
+        String selectedLotSize = model.getValueAt(selectedRowLot, 1).toString();
+        String selectedLotPrice = model.getValueAt(selectedRowLot, 2).toString();
+        String selectedLotArea = model.getValueAt(selectedRowLot, 5).toString();
+        String selectedLotAvailability = model.getValueAt(selectedRowLot, 3).toString();
+        
+        int selectedCustomerID = Integer.parseInt(modelCustomer.getValueAt(selectedRowCustomer, 0).toString());
         String customerName = SelectedCustomerField.getText();
         
-        //Receipt
+        //Find block of selected lot
+        for(Blocks block: BlocksList){
+            if(block.getAddress().equals(selectedLotArea))
+                currentBlock=block;
+        }
+        
         if(selectedLotAvailability.equals("Sold")||selectedLotAvailability.equals("Reserved")){
             JOptionPane.showMessageDialog(this, "This lots is unavailable, please choose another lot");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Customer: " + customerName + "\n" + 
+            //searches for each cutomer inside customerList; if selected customer on jframe and customer inside customerList has the same ID, set customerToOverview = customer
+            System.out.println("before the search loop");
+            for(Customer cus: customerList){
+                int cnt=1;
+                System.out.println("Current customer is "+ cus.getFname());
+                System.out.println("Search Customer ID: "+ cus.getID());
+                System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                if(cus.getID() == selectedCustomerID){
+                    System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                    customerToOverview = cus;
+                    System.out.println("Inside the first loop: "+customerToOverview.getFname());
+                    JOptionPane.showMessageDialog(this, "Customer: " + customerName + "\n" + 
                                                 "Lot: " + selectedLotID + "\n" +
                                                 "Size: " + selectedLotSize + "\n" +
                                                 "Area: " + selectedLotArea + "\n" +
                                                 "Price: " + selectedLotPrice);
+                }
+                else if(!(cus.getID() == (selectedCustomerID +1))){
+                    System.out.println("No match for loop: " +cnt);
+                }
+                
+                //Search for lot
+                for(Lots lot: currentBlock.getLotsArray()){
+                    if(lot.getLotNum().equals(selectedLotID)){
+                        currentLot=lot;
+                        currentLot.setLotStatus("Sold");
+                        
+                        model.setValueAt("Sold", selectedRowLot, 3);
+                    }
+                }
+                if(cus.getID() == selectedCustomerID){
+                    System.out.println("Selected Customer ID: "+ selectedCustomerID);
+                    customerToOverview = cus;
+                    System.out.println("Inside the first loop: "+customerToOverview.getFname());
+                cnt++;
+                }
+            }
+            
+            String customerNameConcat = customerToOverview.getFname() + " " + customerToOverview.getFname();
+            Object[] toOverview = new Object[]{customerToOverview.getID(), customerName, customerToOverview.getEmail(), customerToOverview.getPNumber(), currentLot.getLotNum(), currentLot.getLotSize(),currentLot.getPrice(),currentLot.getLotLocation(),currentLot.getLotStatus()};
+            
+            overviewFrame.AddRowToJTable(toOverview);
+            
+            System.out.println("after the search loop");
+            //Receipt
+            
         }
     }//GEN-LAST:event_BuyActionPerformed
-
+    
     private void ReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReserveActionPerformed
         //
         JOptionPane.showMessageDialog(this, "Lot has been reserved");
@@ -707,6 +787,10 @@ public class Management extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SelectedCustomerFieldActionPerformed
 
+    private void OverviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverviewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OverviewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -757,6 +841,7 @@ public class Management extends javax.swing.JFrame {
     private javax.swing.JTextField FirstNameField;
     private javax.swing.JTextField LastNameField;
     private javax.swing.JTextField NumberField;
+    private javax.swing.JButton Overview;
     private javax.swing.JTextField PriceInputField;
     private javax.swing.JButton Reserve;
     private javax.swing.JButton Search;

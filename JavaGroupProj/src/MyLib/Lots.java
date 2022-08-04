@@ -80,6 +80,10 @@ public class Lots {
     }
     
     //========== Setter ==========
-//
+
+    public void setLotStatus(String lotStatus) {
+        this.lotStatus = lotStatus;
+    }
+    
     
 }
