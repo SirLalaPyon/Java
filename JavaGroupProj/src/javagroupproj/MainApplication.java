@@ -1,8 +1,6 @@
 package javagroupproj;
 
 import MyLib.*;
-import java.util.ArrayList;
-import static javagroupproj.Management.customerList;
 
 
 
